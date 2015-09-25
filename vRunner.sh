@@ -1,5 +1,8 @@
 #!/bin/bash 
 
+ANATOOL="NukeCCInclusive"
+ANATOOL="MLVFSamplePrepTool"
+
 STARTTIME=`date +%Y-%m-%d-%H-%M-%S`
 
 dorun() {
@@ -25,20 +28,20 @@ dorun() {
   fi
 
   # python -m pdb ./ProcessAna.py --mc \
-  time nice $PRODUCTIONSCRIPTSROOT/ana_scripts./ProcessAna.py \
+  time nice $PRODUCTIONSCRIPTSROOT/ana_scripts/ProcessAna.py \
     $DATAMCSTRING \
     $RUNNSTRING $SUBRSTRING $NEVTSTRING \
-    --ana_tool NukeCCInclusive \
+    --ana_tool $ANATOOL \
     --inv eroica \
     --ingrid \
     --kludge Eroica \
     --no_verify_kludge $INTERACTIVESTRING
 
 cat <<EOF
-  time nice $PRODUCTIONSCRIPTSROOT/ana_scripts./ProcessAna.py \
+  time nice $PRODUCTIONSCRIPTSROOT/ana_scripts/ProcessAna.py \
     $DATAMCSTRING \
     $RUNNSTRING $SUBRSTRING $NEVTSTRING \
-    --ana_tool NukeCCInclusive \
+    --ana_tool $ANATOOL \
     --inv eroica \
     --ingrid \
     --kludge Eroica \
@@ -56,7 +59,7 @@ doplaylist() {
   time nice $PRODUCTIONSCRIPTSROOT/ana_scripts/ProcessAna.py \
     $DATAMCSTRING \
     $PLAYLSTRING \
-    --ana_tool NukeCCInclusive \
+    --ana_tool $ANATOOL \
     --inv eroica \
     --ingrid \
     --kludge Eroica \
@@ -66,7 +69,7 @@ cat <<EOF
   time nice $PRODUCTIONSCRIPTSROOT/ana_scripts/ProcessAna.py \
     $DATAMCSTRING \
     $PLAYLSTRING \
-    --ana_tool NukeCCInclusive \
+    --ana_tool $ANATOOL \
     --inv eroica \
     --ingrid \
     --kludge Eroica \
@@ -77,8 +80,8 @@ EOF
 INTERACTIVESTRING=""
 INTERACTIVESTRING="--interactive"
 
-DATAMCSTRING="--mc"
 DATAMCSTRING="--data"
+DATAMCSTRING="--mc"
 
 # data:
 # http://cdcvs.fnal.gov/cgi-bin/public-cvs/cvsweb-public.cgi/AnalysisFramework/Tools/ProductionScripts/data_scripts/playlists/minerva/?cvsroot=mnvsoft
@@ -88,12 +91,12 @@ DATAMCSTRING="--data"
 
 # doplaylist minervame1A > sublog_${STARTTIME}.txt 2>&1
 
-dorun 6207 1
-
 # dorun 6207 1,2,3,4,5 > sublog_${STARTTIME}.txt 2>&1
 
 # dorun 117200  > sublog_${STARTTIME}.txt 2>&1
 # dorun 117200 1
+
+dorun 117200 1 200
 
 # dorun 1  > sublog_${STARTTIME}.txt 2>&1
 # dorun 2 >> sublog_${STARTTIME}.txt 2>&1

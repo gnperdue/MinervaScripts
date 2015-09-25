@@ -33,9 +33,7 @@ dorun() {
 
     # python -m pdb $PRODUCTIONSCRIPTSROOT/ana_scripts/ProcessAna.py --mc \
     time nice $PRODUCTIONSCRIPTSROOT/ana_scripts/ProcessAna.py --mc \
-    $RUNNSTRING \
-    $SUBRSTRING \
-    $NEVTSTRING \
+    $RUNNSTRING $SUBRSTRING $NEVTSTRING \
     --indir $INDIR \
     --ana_tool MLVFSamplePrepTool \
     --opts $OPTSFIL \
