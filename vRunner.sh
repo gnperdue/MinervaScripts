@@ -77,11 +77,19 @@ cat <<EOF
 EOF
 }
 
+do_a_full_mc_run() {
+    INTERACTIVESTRING=""
+    DATAMCSTRING="--mc"
+    dorun 117200  > sublog_${STARTTIME}.txt 2>&1
+}
+
 INTERACTIVESTRING=""
 INTERACTIVESTRING="--interactive"
 
 DATAMCSTRING="--data"
 DATAMCSTRING="--mc"
+
+do_a_full_mc_run
 
 # data:
 # http://cdcvs.fnal.gov/cgi-bin/public-cvs/cvsweb-public.cgi/AnalysisFramework/Tools/ProductionScripts/data_scripts/playlists/minerva/?cvsroot=mnvsoft
@@ -96,7 +104,7 @@ DATAMCSTRING="--mc"
 # dorun 117200  > sublog_${STARTTIME}.txt 2>&1
 # dorun 117200 1
 
-dorun 117200 1 200
+# dorun 117200 1 200
 
 # dorun 1  > sublog_${STARTTIME}.txt 2>&1
 # dorun 2 >> sublog_${STARTTIME}.txt 2>&1
