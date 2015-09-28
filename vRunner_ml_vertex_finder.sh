@@ -70,11 +70,11 @@ do_small_five_runs() {
 INTERACTIVESTRING=""
 INTERACTIVESTRING="--interactive"
 
-# do_big_five_runs
+do_big_five_runs
 
 # do_small_one_run
 
-do_small_five_runs
+# do_small_five_runs
 
 # dorun 1 2 
 # dorun 2 1 
