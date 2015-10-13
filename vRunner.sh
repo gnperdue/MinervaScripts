@@ -83,13 +83,33 @@ do_a_full_mc_run() {
     dorun 117200  > sublog_${STARTTIME}.txt 2>&1
 }
 
+do_a_few_mc_subruns() {
+    INTERACTIVESTRING=""
+    DATAMCSTRING="--mc"
+    dorun 117200 1,2,3,4,5,6,7,8,9,10,11,12 > sublog_${STARTTIME}.txt 2>&1
+}
+
+do_a_small_mc_sample() {
+    INTERACTIVESTRING="--interactive"
+    DATAMCSTRING="--mc"
+    dorun 117200 1 200
+    dorun 117200 2 200
+}
+
 INTERACTIVESTRING=""
 INTERACTIVESTRING="--interactive"
 
 DATAMCSTRING="--data"
 DATAMCSTRING="--mc"
 
+# do_a_few_mc_subruns
+
+# do_a_small_mc_sample
+
 do_a_full_mc_run
+
+
+
 
 # data:
 # http://cdcvs.fnal.gov/cgi-bin/public-cvs/cvsweb-public.cgi/AnalysisFramework/Tools/ProductionScripts/data_scripts/playlists/minerva/?cvsroot=mnvsoft
@@ -104,7 +124,6 @@ do_a_full_mc_run
 # dorun 117200  > sublog_${STARTTIME}.txt 2>&1
 # dorun 117200 1
 
-# dorun 117200 1 200
 
 # dorun 1  > sublog_${STARTTIME}.txt 2>&1
 # dorun 2 >> sublog_${STARTTIME}.txt 2>&1
