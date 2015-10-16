@@ -55,7 +55,7 @@ if [[ ! -e $FULLTEST ]]; then
         exit 1
     fi
     NTEST=`wc -l $TESTNAME | perl -ne '@l=split /\s+/,$_; print @l[0];'`
-    FULLTEST="skim_data_learn_target0_${NTEST}.dat"
+    FULLTEST="skim_data_test_target0_${NTEST}.dat"
     mv $TESTNAME $FULLTEST
 fi
 
