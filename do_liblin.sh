@@ -23,3 +23,4 @@ REPORTFILE="liblin_${TARGET}_learn${NLEARN}_test${NTEST}.txt"
 
 time ./train $SKIMLEARN >& $REPORTFILE
 ./predict $SKIMTEST ${SKIMLEARN}.model ${SKIMTEST}.predict >> $REPORTFILE
+cat $REPORTFILE
