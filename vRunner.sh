@@ -77,6 +77,13 @@ cat <<EOF
 EOF
 }
 
+do_two_full_mc_runs() {
+    INTERACTIVESTRING=""
+    DATAMCSTRING="--mc"
+    dorun 117200  > sublog_${STARTTIME}.txt 2>&1
+    dorun 117201  > sublog_${STARTTIME}.txt 2>&1
+}
+
 do_a_full_mc_run() {
     INTERACTIVESTRING=""
     DATAMCSTRING="--mc"
@@ -106,7 +113,9 @@ DATAMCSTRING="--mc"
 
 # do_a_small_mc_sample
 
-do_a_full_mc_run
+# do_a_full_mc_run
+
+do_two_full_mc_runs
 
 
 
