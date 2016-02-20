@@ -1,7 +1,7 @@
 #!/bin/bash 
 
-ANATOOL="NukeCCInclusive"
 ANATOOL="MLVFSamplePrepTool"
+ANATOOL="NukeCCInclusive"
 
 STARTTIME=`date +%Y-%m-%d-%H-%M-%S`
 
@@ -80,8 +80,8 @@ EOF
 do_two_full_mc_runs() {
     INTERACTIVESTRING=""
     DATAMCSTRING="--mc"
-    dorun 117200  > sublog_${STARTTIME}.txt 2>&1
-    dorun 117201  > sublog_${STARTTIME}.txt 2>&1
+    dorun 112200  > sublog_${STARTTIME}.txt 2>&1
+    dorun 112201  > sublog_${STARTTIME}.txt 2>&1
 }
 
 do_a_full_mc_run() {
@@ -99,8 +99,8 @@ do_a_few_mc_subruns() {
 do_a_small_mc_sample() {
     INTERACTIVESTRING="--interactive"
     DATAMCSTRING="--mc"
-    dorun 117200 1 200
-    dorun 117200 2 200
+    dorun 112200 1 200
+    dorun 112200 2 200
 }
 
 INTERACTIVESTRING=""
@@ -118,6 +118,9 @@ DATAMCSTRING="--mc"
 do_two_full_mc_runs
 
 
+# MinervaMC run info...
+# 117200 -> 117209(?) is minervame1A
+# 112200 -> 112205(?) is minervame1B ? - looks plausible
 
 
 # data:
