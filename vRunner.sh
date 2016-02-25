@@ -77,11 +77,13 @@ cat <<EOF
 EOF
 }
 
-do_two_full_mc_runs() {
+do_four_full_mc_runs() {
     INTERACTIVESTRING=""
     DATAMCSTRING="--mc"
-    dorun 112200  > sublog_${STARTTIME}.txt 2>&1
-    dorun 112201  > sublog_${STARTTIME}.txt 2>&1
+    dorun 112202  > sublog_${STARTTIME}.txt 2>&1
+    dorun 112203  > sublog_${STARTTIME}.txt 2>&1
+    dorun 112204  > sublog_${STARTTIME}.txt 2>&1
+    dorun 112205  > sublog_${STARTTIME}.txt 2>&1
 }
 
 do_a_full_mc_run() {
@@ -115,7 +117,7 @@ DATAMCSTRING="--mc"
 
 # do_a_full_mc_run
 
-do_two_full_mc_runs
+do_four_full_mc_runs
 
 
 # MinervaMC run info...
