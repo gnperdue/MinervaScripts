@@ -34,6 +34,7 @@ dorun() {
     --ana_tool $ANATOOL \
     --inv eroica \
     --ingrid \
+    --dcacheout \
     --kludge Eroica \
     --no_verify_kludge $INTERACTIVESTRING
 
@@ -44,6 +45,7 @@ cat <<EOF
     --ana_tool $ANATOOL \
     --inv eroica \
     --ingrid \
+    --dcacheout \
     --kludge Eroica \
     --no_verify_kludge $INTERACTIVESTRING
 EOF
@@ -62,6 +64,7 @@ doplaylist() {
     --ana_tool $ANATOOL \
     --inv eroica \
     --ingrid \
+    --dcacheout \
     --kludge Eroica \
     --no_verify_kludge 
 
@@ -72,18 +75,20 @@ cat <<EOF
     --ana_tool $ANATOOL \
     --inv eroica \
     --ingrid \
+    --dcacheout \
     --kludge Eroica \
     --no_verify_kludge 
 EOF
 }
 
-do_four_full_mc_runs() {
+do_five_full_mc_runs() {
     INTERACTIVESTRING=""
     DATAMCSTRING="--mc"
-    dorun 112202  > sublog_${STARTTIME}.txt 2>&1
-    dorun 112203  > sublog_${STARTTIME}.txt 2>&1
-    dorun 112204  > sublog_${STARTTIME}.txt 2>&1
-    dorun 112205  > sublog_${STARTTIME}.txt 2>&1
+    dorun 117200  > sublog_${STARTTIME}.txt 2>&1
+    dorun 117201  > sublog_${STARTTIME}.txt 2>&1
+    dorun 117202  > sublog_${STARTTIME}.txt 2>&1
+    dorun 117203  > sublog_${STARTTIME}.txt 2>&1
+    dorun 117204  > sublog_${STARTTIME}.txt 2>&1
 }
 
 do_a_full_mc_run() {
@@ -129,9 +134,9 @@ DATAMCSTRING="--mc"
 
 # do_a_full_mc_run
 
-# do_four_full_mc_runs
+do_five_full_mc_runs
 
-do_subrun_recovery
+# do_subrun_recovery
 
 
 # MinervaMC run info...
