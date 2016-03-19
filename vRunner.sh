@@ -77,14 +77,15 @@ cat <<EOF
 EOF
 }
 
-do_five_full_mc_runs() {
+do_six_full_mc_runs() {
     INTERACTIVESTRING=""
     DATAMCSTRING="--mc"
-    dorun 117205  > sublog_${STARTTIME}.txt 2>&1
-    dorun 117206  > sublog_${STARTTIME}.txt 2>&1
-    dorun 117207  > sublog_${STARTTIME}.txt 2>&1
-    dorun 117208  > sublog_${STARTTIME}.txt 2>&1
-    dorun 117209  > sublog_${STARTTIME}.txt 2>&1
+    dorun 112200  > sublog_${STARTTIME}.txt 2>&1
+    dorun 112201  >> sublog_${STARTTIME}.txt 2>&1
+    dorun 112202  >> sublog_${STARTTIME}.txt 2>&1
+    dorun 112203  >> sublog_${STARTTIME}.txt 2>&1
+    dorun 112204  >> sublog_${STARTTIME}.txt 2>&1
+    dorun 112205  >> sublog_${STARTTIME}.txt 2>&1
 }
 
 do_a_full_mc_run() {
@@ -102,7 +103,7 @@ do_a_few_mc_subruns() {
 do_a_small_mc_sample() {
     INTERACTIVESTRING="--interactive"
     DATAMCSTRING="--mc"
-    dorun 112200 1 200
+    dorun 112200 1 300
     # dorun 112200 2 200
 }
 
@@ -120,11 +121,11 @@ DATAMCSTRING="--mc"
 
 # do_a_few_mc_subruns
 
-do_a_small_mc_sample
+# do_a_small_mc_sample
 
 # do_a_full_mc_run
 
-# do_five_full_mc_runs
+do_six_full_mc_runs
 
 # do_subrun_recovery
 
