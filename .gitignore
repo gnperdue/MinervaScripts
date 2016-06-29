@@ -2,3 +2,6 @@ sublog*txt
 
 # scripts are autogen'ed and not stable
 resubmit_missing_data.sh
+
+# logs and stuff
+archive
