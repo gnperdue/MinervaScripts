@@ -7,7 +7,7 @@ STARTTIME=`date +%Y-%m-%d-%H-%M-%S`
 STARTDATE=`date +%Y%m%d`
 
 MEMORY="2000MB"
-LIFETIME="4h"
+LIFETIME="3h"
 
 dorun() {
   # First arg is run, second (optional) is the subrun,
@@ -111,13 +111,13 @@ do_a_few_mc_subruns() {
     INTERACTIVESTRING=""
     DATAMCSTRING="--mc"
     dorun 10200 1,2,3,4,5,6,7,8 > sublog_${STARTTIME}.txt 2>&1
+    # dorun 10200 9,10,11,12,13,14,15,16 > sublog_${STARTTIME}.txt 2>&1
 }
 
 do_a_small_mc_sample() {
     INTERACTIVESTRING="--interactive"
     DATAMCSTRING="--mc"
     dorun 10200 1 300
-    # dorun 112200 2 200
 }
 
 do_subrun_recovery() {
