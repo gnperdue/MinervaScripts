@@ -129,13 +129,20 @@ do_subrun_recovery() {
     # dorun 117201 1,2,3 >> sublog_${STARTTIME}.txt 2>&1
 }
 
+do_a_playlist() {
+    INTERACTIVESTRING=""
+    DATAMCSTRING="--mc"
+    PLAYLIST="minerva1"
+    doplaylist $PLAYLIST > sublog_${STARTTIME}.txt 2>&1
+}
+
 INTERACTIVESTRING=""
 INTERACTIVESTRING="--interactive"
 
 DATAMCSTRING="--data"
 DATAMCSTRING="--mc"
 
-do_a_few_mc_subruns
+# do_a_few_mc_subruns
 
 # do_a_small_mc_sample
 
@@ -145,6 +152,7 @@ do_a_few_mc_subruns
 
 # do_subrun_recovery
 
+do_a_playlist
 
 # MinervaMC run info...
 # 117200 -> 117209(?) is minervame1A
