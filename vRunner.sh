@@ -109,7 +109,7 @@ do_five_full_mc_runs() {
 do_a_full_mc_run() {
     INTERACTIVESTRING=""
     DATAMCSTRING="--mc"
-    dorun 112201  > sublog_${STARTTIME}.txt 2>&1
+    dorun 112202  > sublog_${STARTTIME}.txt 2>&1
 }
 
 do_a_few_mc_subruns() {
