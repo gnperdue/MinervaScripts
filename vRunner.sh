@@ -131,7 +131,7 @@ do_subrun_recovery() {
     # dorun 117200 39,41 > sublog_${STARTTIME}.txt 2>&1
     # dorun 117201 1,2,3 >> sublog_${STARTTIME}.txt 2>&1
 
-    dorun 112204 280,281,282,283,284 > sublog_${STARTTIME}.txt 2>&1
+    dorun 112203 1583,1584,1585,1586,1587 > sublog_${STARTTIME}.txt 2>&1
 
 }
 
