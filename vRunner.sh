@@ -7,12 +7,12 @@ STARTTIME=`date +%Y-%m-%d-%H-%M-%S`
 STARTDATE=`date +%Y%m%d`
 
 # general running...
-MEMORY="2000MB"
-LIFETIME="3h"
+# MEMORY="2000MB"
+# LIFETIME="3h"
 
 # for subrun recovery
-# MEMORY="3000MB"
-# LIFETIME="5h"
+MEMORY="3000MB"
+LIFETIME="5h"
 
 dorun() {
   # First arg is run, second (optional) is the subrun,
@@ -131,18 +131,26 @@ do_a_few_data_subruns() {
 
 do_subrun_recovery() {
     INTERACTIVESTRING=""
-    DATAMCSTRING="--mc"
+    # DATAMCSTRING="--mc"
+    DATAMCSTRING="--data"
 
     # not real recovery runs
     # dorun 117200 39,41 > sublog_${STARTTIME}.txt 2>&1
     # dorun 117201 1,2,3 >> sublog_${STARTTIME}.txt 2>&1
 
+    dorun 10114 26,27,28,29,30 > sublog_${STARTTIME}.txt 2>&1
+    dorun 10116 42 >> sublog_${STARTTIME}.txt 2>&1
+    dorun 10124 7 >> sublog_${STARTTIME}.txt 2>&1
+    dorun 10068 1,2,15,16 >> sublog_${STARTTIME}.txt 2>&1
+    dorun 10080 50 >> sublog_${STARTTIME}.txt 2>&1
+    dorun 10099 31,32,33,34,35 >> sublog_${STARTTIME}.txt 2>&1
 }
 
 do_a_playlist() {
     INTERACTIVESTRING=""
-    DATAMCSTRING="--mc"
-    PLAYLIST="minerva1"
+    # DATAMCSTRING="--mc"
+    DATAMCSTRING="--data"
+    PLAYLIST="minervame1B"
     doplaylist $PLAYLIST > sublog_${STARTTIME}.txt 2>&1
 }
 
@@ -160,11 +168,11 @@ DATAMCSTRING="--data"
 
 # do_three_full_mc_runs
 
-# do_subrun_recovery
+do_subrun_recovery
 
 # do_a_playlist
 
-do_a_few_data_subruns
+# do_a_few_data_subruns
 
 # MinervaMC run info...
 # 117200 -> 117209(?) is minervame1A
