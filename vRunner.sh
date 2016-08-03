@@ -12,7 +12,7 @@ STARTDATE=`date +%Y%m%d`
 
 # for subrun recovery
 MEMORY="3000MB"
-LIFETIME="5h"
+LIFETIME="8h"
 
 dorun() {
   # First arg is run, second (optional) is the subrun,
@@ -138,12 +138,17 @@ do_subrun_recovery() {
     # dorun 117200 39,41 > sublog_${STARTTIME}.txt 2>&1
     # dorun 117201 1,2,3 >> sublog_${STARTTIME}.txt 2>&1
 
-    dorun 10114 26,27,28,29,30 > sublog_${STARTTIME}.txt 2>&1
-    dorun 10116 42 >> sublog_${STARTTIME}.txt 2>&1
+    # dorun 10114 26,27,28,29,30 > sublog_${STARTTIME}.txt 2>&1
+    # dorun 10116 42 >> sublog_${STARTTIME}.txt 2>&1
+    # dorun 10124 7 >> sublog_${STARTTIME}.txt 2>&1
+    # dorun 10068 1,2,15,16 >> sublog_${STARTTIME}.txt 2>&1
+    # dorun 10080 50 >> sublog_${STARTTIME}.txt 2>&1
+    # dorun 10099 31,32,33,34,35 >> sublog_${STARTTIME}.txt 2>&1
+
+    dorun 10116 42 > sublog_${STARTTIME}.txt 2>&1
     dorun 10124 7 >> sublog_${STARTTIME}.txt 2>&1
     dorun 10068 1,2,15,16 >> sublog_${STARTTIME}.txt 2>&1
     dorun 10080 50 >> sublog_${STARTTIME}.txt 2>&1
-    dorun 10099 31,32,33,34,35 >> sublog_${STARTTIME}.txt 2>&1
 }
 
 do_a_playlist() {
