@@ -155,7 +155,7 @@ do_a_playlist() {
     INTERACTIVESTRING=""
     # DATAMCSTRING="--mc"
     DATAMCSTRING="--data"
-    PLAYLIST="minervame1B"
+    PLAYLIST="minervame1A"
     doplaylist $PLAYLIST > sublog_${STARTTIME}.txt 2>&1
 }
 
@@ -173,9 +173,9 @@ DATAMCSTRING="--data"
 
 # do_three_full_mc_runs
 
-do_subrun_recovery
+# do_subrun_recovery
 
-# do_a_playlist
+do_a_playlist
 
 # do_a_few_data_subruns
 
