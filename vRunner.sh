@@ -11,8 +11,8 @@ STARTDATE=`date +%Y%m%d`
 # LIFETIME="3h"
 
 # for subrun recovery
-MEMORY="3000MB"
-LIFETIME="8h"
+MEMORY="2000MB"
+LIFETIME="4h"
 
 dorun() {
   # First arg is run, second (optional) is the subrun,
@@ -145,10 +145,11 @@ do_subrun_recovery() {
     # dorun 10080 50 >> sublog_${STARTTIME}.txt 2>&1
     # dorun 10099 31,32,33,34,35 >> sublog_${STARTTIME}.txt 2>&1
 
-    dorun 10116 42 > sublog_${STARTTIME}.txt 2>&1
-    dorun 10124 7 >> sublog_${STARTTIME}.txt 2>&1
-    dorun 10068 1,2,15,16 >> sublog_${STARTTIME}.txt 2>&1
-    dorun 10080 50 >> sublog_${STARTTIME}.txt 2>&1
+    dorun 6182 22 > sublog_${STARTTIME}.txt 2>&1
+    dorun 10000 42 >> sublog_${STARTTIME}.txt 2>&1
+    dorun 10004 43 >> sublog_${STARTTIME}.txt 2>&1
+    dorun 10025 8 >> sublog_${STARTTIME}.txt 2>&1
+    dorun 8014 46,47 >> sublog_${STARTTIME}.txt 2>&1
 }
 
 do_a_playlist() {
@@ -173,9 +174,9 @@ DATAMCSTRING="--data"
 
 # do_three_full_mc_runs
 
-# do_subrun_recovery
+do_subrun_recovery
 
-do_a_playlist
+# do_a_playlist
 
 # do_a_few_data_subruns
 
