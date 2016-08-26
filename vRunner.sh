@@ -154,9 +154,9 @@ do_subrun_recovery() {
 
 do_a_playlist() {
     INTERACTIVESTRING=""
-    # DATAMCSTRING="--mc"
-    DATAMCSTRING="--data"
-    PLAYLIST="minervame1A"
+    # DATAMCSTRING="--data"
+    DATAMCSTRING="--mc"
+    PLAYLIST="minerva13C"
     doplaylist $PLAYLIST > sublog_${STARTTIME}.txt 2>&1
 }
 
@@ -174,9 +174,9 @@ DATAMCSTRING="--data"
 
 # do_three_full_mc_runs
 
-do_subrun_recovery
+# do_subrun_recovery
 
-# do_a_playlist
+do_a_playlist
 
 # do_a_few_data_subruns
 
@@ -184,6 +184,15 @@ do_subrun_recovery
 # 117200 -> 117209(?) is minervame1A
 # 112200 -> 112205(?) is minervame1B ? - looks plausible
 # Run Range for playlist minerva1: [ 10200 - 10250 )
+#
+#  mc:
+# perdue@minervagpvm04> cd $PRODUCTIONSCRIPTSROOT
+# perdue@minervagpvm04> find . -name MCStandardRun.py
+# ./py_classes/MCStandardRun.py
+# perdue@minervagpvm04> python py_classes/MCStandardRun.py --playlist minerva13C
+#
+# and:
+# https://cdcvs.fnal.gov/redmine/projects/minerva-sw/wiki/Monte_Carlo_Production_Run_Numbers
 
 # data:
 # http://cdcvs.fnal.gov/cgi-bin/public-cvs/cvsweb-public.cgi/AnalysisFramework/Tools/ProductionScripts/data_scripts/playlists/minerva/?cvsroot=mnvsoft
