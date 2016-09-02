@@ -99,9 +99,9 @@ EOF
 do_three_full_mc_runs() {
     INTERACTIVESTRING=""
     DATAMCSTRING="--mc"
-    dorun 112203  > sublog_${STARTTIME}.txt 2>&1
-    dorun 112204 >> sublog_${STARTTIME}.txt 2>&1
-    dorun 112205 >> sublog_${STARTTIME}.txt 2>&1
+    dorun 12200  > sublog_${STARTTIME}.txt 2>&1
+    dorun 12201 >> sublog_${STARTTIME}.txt 2>&1
+    dorun 12202 >> sublog_${STARTTIME}.txt 2>&1
 }
 
 do_a_full_mc_run() {
@@ -159,11 +159,11 @@ DATAMCSTRING="--data"
 
 # do_a_full_mc_run
 
-# do_three_full_mc_runs
+do_three_full_mc_runs
 
 # do_subrun_recovery
 
-do_a_playlist
+# do_a_playlist
 
 # do_a_few_data_subruns
 
