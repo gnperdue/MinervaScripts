@@ -11,7 +11,7 @@ STARTDATE=`date +%Y%m%d`
 # LIFETIME="3h"
 
 # for subrun recovery
-MEMORY="3000MB"
+MEMORY="2500MB"
 LIFETIME="8h"
 
 dorun() {
@@ -113,14 +113,14 @@ do_a_full_mc_run() {
 do_a_few_mc_subruns() {
     INTERACTIVESTRING=""
     DATAMCSTRING="--mc"
-    dorun 10200 1,2,3,4,5,6,7,8 > sublog_${STARTTIME}.txt 2>&1
+    dorun 117200 1,2,3,4 > sublog_${STARTTIME}.txt 2>&1
     # dorun 10200 9,10,11,12,13,14,15,16 > sublog_${STARTTIME}.txt 2>&1
 }
 
 do_a_small_mc_sample() {
     INTERACTIVESTRING="--interactive"
     DATAMCSTRING="--mc"
-    dorun 10200 1 300
+    dorun 117200 2 300
 }
 
 do_a_few_data_subruns() {
@@ -143,7 +143,7 @@ do_a_playlist() {
     INTERACTIVESTRING=""
     # DATAMCSTRING="--data"
     DATAMCSTRING="--mc"
-    PLAYLIST="minerva13A"
+    PLAYLIST="minervame1A"
     doplaylist $PLAYLIST > sublog_${STARTTIME}.txt 2>&1
 }
 
@@ -159,11 +159,11 @@ DATAMCSTRING="--data"
 
 # do_a_full_mc_run
 
-do_three_full_mc_runs
+# do_three_full_mc_runs
 
 # do_subrun_recovery
 
-# do_a_playlist
+do_a_playlist
 
 # do_a_few_data_subruns
 
