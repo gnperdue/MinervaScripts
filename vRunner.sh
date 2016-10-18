@@ -171,9 +171,9 @@ DATAMCSTRING="--data"
 
 # do_a_full_mc_run
 
-do_five_full_mc_runs
+# do_five_full_mc_runs
 
-# do_subrun_recovery
+do_subrun_recovery
 
 # do_a_playlist
 
