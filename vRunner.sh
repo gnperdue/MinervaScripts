@@ -7,12 +7,12 @@ STARTTIME=`date +%Y-%m-%d-%H-%M-%S`
 STARTDATE=`date +%Y%m%d`
 
 # general running...
-# MEMORY="2500MB"
-# LIFETIME="8h"
+MEMORY="2000MB"
+LIFETIME="8h"
 
 # for subrun recovery
-MEMORY="3000MB"
-LIFETIME="12h"
+# MEMORY="3000MB"
+# LIFETIME="12h"
 
 dorun() {
   # First arg is run, second (optional) is the subrun,
@@ -47,7 +47,7 @@ dorun() {
     --kludge Eroica \
     --memory $MEMORY \
     --lifetime $LIFETIME \
-    --nofsi --no_verify_kludge $INTERACTIVESTRING
+    --mc_var NoFSI --no_verify_kludge $INTERACTIVESTRING
 
 cat <<EOF
   time nice $PRODUCTIONSCRIPTSROOT/ana_scripts/ProcessAna.py \
@@ -59,7 +59,7 @@ cat <<EOF
     --kludge Eroica \
     --memory $MEMORY \
     --lifetime $LIFETIME \
-    --nofsi --no_verify_kludge $INTERACTIVESTRING
+    --mc_var NoFSI --no_verify_kludge $INTERACTIVESTRING
 EOF
 }
 
@@ -80,7 +80,7 @@ doplaylist() {
     --kludge Eroica \
     --memory $MEMORY \
     --lifetime $LIFETIME \
-    --no_verify_kludge 
+    --mc_var NoFSI --no_verify_kludge 
 
 cat <<EOF
   time nice $PRODUCTIONSCRIPTSROOT/ana_scripts/ProcessAna.py \
@@ -92,7 +92,7 @@ cat <<EOF
     --kludge Eroica \
     --memory $MEMORY \
     --lifetime $LIFETIME \
-    --no_verify_kludge 
+    --mc_var NoFSI --no_verify_kludge 
 EOF
 }
 
@@ -144,7 +144,8 @@ do_a_playlist() {
     INTERACTIVESTRING=""
     # DATAMCSTRING="--data"
     DATAMCSTRING="--mc"
-    PLAYLIST="minervame1A"
+    # PLAYLIST="minervame1A"
+    PLAYLIST="minerva1"
     doplaylist $PLAYLIST > sublog_${STARTTIME}.txt 2>&1
 }
 
@@ -154,7 +155,7 @@ INTERACTIVESTRING="--interactive"
 DATAMCSTRING="--mc"
 DATAMCSTRING="--data"
 
-do_a_few_mc_subruns
+# do_a_few_mc_subruns
 
 # do_a_small_mc_sample
 
@@ -164,7 +165,7 @@ do_a_few_mc_subruns
 
 # do_subrun_recovery
 
-# do_a_playlist
+do_a_playlist
 
 # do_a_few_data_subruns
 
@@ -190,13 +191,10 @@ do_a_few_mc_subruns
 # e.g. python py_classes/MCStandardRun.py --playlist=minerva1
 
 
-# doplaylist minervame1A > sublog_${STARTTIME}.txt 2>&1
-
 # dorun 6207 1,2,3,4,5 > sublog_${STARTTIME}.txt 2>&1
 
 # dorun 117200  > sublog_${STARTTIME}.txt 2>&1
 # dorun 117200 1
-
 
 # dorun 1  > sublog_${STARTTIME}.txt 2>&1
 # dorun 2 >> sublog_${STARTTIME}.txt 2>&1
