@@ -47,7 +47,7 @@ dorun() {
     --kludge Eroica \
     --memory $MEMORY \
     --lifetime $LIFETIME \
-    --NOFSI --no_verify_kludge $INTERACTIVESTRING
+    --nofsi --no_verify_kludge $INTERACTIVESTRING
 
 cat <<EOF
   time nice $PRODUCTIONSCRIPTSROOT/ana_scripts/ProcessAna.py \
@@ -59,7 +59,7 @@ cat <<EOF
     --kludge Eroica \
     --memory $MEMORY \
     --lifetime $LIFETIME \
-    --NOFSI --no_verify_kludge $INTERACTIVESTRING
+    --nofsi --no_verify_kludge $INTERACTIVESTRING
 EOF
 }
 
