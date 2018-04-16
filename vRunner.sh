@@ -2,20 +2,27 @@
 
 ANATOOL="MLVFSamplePrepTool"
 ANATOOL="NukeCCInclusive"
+ANATOOL="NuECCQE"
 
 STARTTIME=`date +%Y-%m-%d-%H-%M-%S`
 STARTDATE=`date +%Y%m%d`
 
 # general running...
-# MEMORY="2000MB"
-# LIFETIME="8h"
+MEMORY="2000MB"
+LIFETIME="8h"
 
 # for subrun recovery
-MEMORY="2500MB"
-LIFETIME="12h"
+# MEMORY="2500MB"
+# LIFETIME="12h"
 
 MCVARSTRING="--mc_var NoFSI"
 MCVARSTRING=""
+
+KLUDGESTR="--kludge Inextinguishable"
+
+INVER="Inextinguishable"
+
+
 
 dorun() {
   # First arg is run, second (optional) is the subrun,
@@ -40,30 +47,17 @@ dorun() {
   fi
   OUTDIR=/pnfs/minerva/persistent/users/perdue/mnv${DATAMCSTRING}${STARTDATE}
 
-  # python -m pdb ./ProcessAna.py --mc \
-  time nice $PRODUCTIONSCRIPTSROOT/ana_scripts/ProcessAna.py \
-    $DATAMCSTRING \
-    $RUNNSTRING $SUBRSTRING $NEVTSTRING \
-    --ana_tool $ANATOOL \
-    --inv eroica \
-    --outdir $OUTDIR \
-    --kludge Eroica \
-    --memory $MEMORY \
-    --lifetime $LIFETIME \
-    $MCVARSTRING --no_verify_kludge $INTERACTIVESTRING
+  ARGS="--ana_tool $ANATOOL $DATAMCSTRING $INTERACTIVESTRING --inv $INVER --outdir $OUTDIR $RUNNSTRING $SUBRSTRING $NEVTSTRING $KLUDGESTR --memory $MEMORY --lifetime $LIFETIME $MCVARSTRING --tracker"
+
+  pushd $PRODUCTIONSCRIPTSLITEROOT/ana_scripts/
 
 cat <<EOF
-  time nice $PRODUCTIONSCRIPTSROOT/ana_scripts/ProcessAna.py \
-    $DATAMCSTRING \
-    $RUNNSTRING $SUBRSTRING $NEVTSTRING \
-    --ana_tool $ANATOOL \
-    --inv eroica \
-    --outdir $OUTDIR \
-    --kludge Eroica \
-    --memory $MEMORY \
-    --lifetime $LIFETIME \
-    $MCVARSTRING --no_verify_kludge $INTERACTIVESTRING
+    python ProcessAna.py $ARGS
 EOF
+
+  python ProcessAna.py $ARGS
+
+  popd
 }
 
 doplaylist() {
@@ -74,29 +68,17 @@ doplaylist() {
   PLAYLSTRING="--playlist $PLAYLIST"
   OUTDIR=/pnfs/minerva/persistent/users/perdue/mnv${DATAMCSTRING}${STARTDATE}
 
-  time nice $PRODUCTIONSCRIPTSROOT/ana_scripts/ProcessAna.py \
-    $DATAMCSTRING \
-    $PLAYLSTRING \
-    --ana_tool $ANATOOL \
-    --inv eroica \
-    --outdir $OUTDIR \
-    --kludge Eroica \
-    --memory $MEMORY \
-    --lifetime $LIFETIME \
-    $MCVARSTRING --no_verify_kludge 
+  ARGS="--ana_tool $ANATOOL $DATAMCSTRING --inv $INVER --outdir $OUTDIR $PLAYLSTRING $KLUDGESTR --memory $MEMORY --lifetime $LIFETIME $MCVARSTRING --tracker"
+
+  pushd $PRODUCTIONSCRIPTSLITEROOT/ana_scripts/
 
 cat <<EOF
-  time nice $PRODUCTIONSCRIPTSROOT/ana_scripts/ProcessAna.py \
-    $DATAMCSTRING \
-    $PLAYLSTRING \
-    --ana_tool $ANATOOL \
-    --inv eroica \
-    --outdir $OUTDIR \
-    --kludge Eroica \
-    --memory $MEMORY \
-    --lifetime $LIFETIME \
-    $MCVARSTRING --no_verify_kludge 
+    python ProcessAna.py $ARGS
 EOF
+
+  python ProcessAna.py $ARGS
+
+  popd
 }
 
 do_five_full_mc_runs() {
@@ -118,13 +100,13 @@ do_a_full_mc_run() {
 do_a_few_mc_subruns() {
     INTERACTIVESTRING=""
     DATAMCSTRING="--mc"
-    dorun 10200 1,2,3,4,5,6,7,8 > sublog_${STARTTIME}.txt 2>&1
+    dorun 113270 1,2,3,4,5,6,7,8 > sublog_${STARTTIME}.txt 2>&1
 }
 
 do_a_small_mc_sample() {
     INTERACTIVESTRING="--interactive"
     DATAMCSTRING="--mc"
-    dorun 117200 2 300
+    dorun 113270 3 300
 }
 
 do_a_few_data_subruns() {
@@ -158,65 +140,21 @@ INTERACTIVESTRING="--interactive"
 DATAMCSTRING="--data"
 DATAMCSTRING="--mc"
 
-# do_a_few_mc_subruns
 
-do_a_small_mc_sample
+# do_a_small_mc_sample
+do_a_few_mc_subruns
 
 # do_a_full_mc_run
-
 # do_five_full_mc_runs
-
 # do_subrun_recovery
-
 # do_a_playlist
-
 # do_a_few_data_subruns
 
 # MinervaMC run info...
-# 117200 -> 117209(?) is minervame1A
-# 112200 -> 112205(?) is minervame1B ? - looks plausible
-# Run Range for playlist minerva1: [ 10200 - 10250 )
-#
-#  mc:
 # perdue@minervagpvm04> cd $PRODUCTIONSCRIPTSROOT
 # perdue@minervagpvm04> find . -name MCStandardRun.py
 # ./py_classes/MCStandardRun.py
 # perdue@minervagpvm04> python py_classes/MCStandardRun.py --playlist minerva13C
 #
 # and:
-# https://cdcvs.fnal.gov/redmine/projects/minerva-sw/wiki/Monte_Carlo_Production_Run_Numbers
-
-# data:
-# http://cdcvs.fnal.gov/cgi-bin/public-cvs/cvsweb-public.cgi/AnalysisFramework/Tools/ProductionScripts/data_scripts/playlists/minerva/?cvsroot=mnvsoft
-#
-# mc:
-# use `python MCStandardRun.py --help`
-# e.g. python py_classes/MCStandardRun.py --playlist=minerva1
-
-
-# dorun 6207 1,2,3,4,5 > sublog_${STARTTIME}.txt 2>&1
-
-# dorun 117200  > sublog_${STARTTIME}.txt 2>&1
-# dorun 117200 1
-
-# dorun 1  > sublog_${STARTTIME}.txt 2>&1
-# dorun 2 >> sublog_${STARTTIME}.txt 2>&1
-# dorun 3 >> sublog_${STARTTIME}.txt 2>&1
-
-# dorun 1 2 
-
-# dorun 1 1 200
-
-# after two (and three) rounds of processing me1Amc (Eroica)
-# perdue@minervagpvm02> python count_missing_subs.py ../MinervaScripts/missing_subruns.txt
-# 117200 667
-# 117201 184
-# 117202 80
-# 117203 63
-# 117204 263
-# 117205 190
-# 117206 252
-# 117207 465
-# 117208 240
-# 117209 152
-# 2556
+# https://cdcvs.fnal.gov/redmine/projects/minerva-sw/wiki/Inextinguishable_Monte_Carlo_Production_Run_Numbers
